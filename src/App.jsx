@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '../public/vite.svg'
 import './App.css'
 
+// [x] Add css framework classless (haven't commit yet)
+// [ ] Add and input with a search button
+
 function App () {
   const [count, setCount] = useState(0)
 
