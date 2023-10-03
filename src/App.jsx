@@ -1,6 +1,6 @@
 import './App.css'
-import responseMovies from './mocks/with-results.json'
-// import withoutResults from './mocks/no-results.json'
+import { Movies } from './components/Movies'
+import { useMovies } from './hooks/useMovies'
 
 // [x] Add css framework classless
 // [x] Add an input with a search button
@@ -8,8 +8,8 @@ import responseMovies from './mocks/with-results.json'
 // [ ] List the movies found and display the title, year, and poster
 
 function App () {
-  const movies = responseMovies.Search
-  const hasMovies = movies?.length > 0
+  const { movies } = useMovies()
+
   return (
     <>
       <header>
@@ -21,25 +21,7 @@ function App () {
       </header>
 
       <main>
-        {
-          hasMovies
-            ? (
-              <ul>
-                {
-                movies.map(movie => (
-                  <li key={movie.imdbID}>
-                    <h3>{movie.Title}</h3>
-                    <p>{movie.Year}</p>
-                    <img src={movie.Poster} alt={movie.Title} />
-                  </li>
-                ))
-              }
-              </ul>
-              )
-            : (
-              <p>No se encontraron peliculas que coincidan con la busqueda</p>
-              )
-        }
+        <Movies movies={movies} />
       </main>
     </>
   )
