@@ -4,8 +4,8 @@ export const ListOfMovies = ({ movies }) => (
     movies.map(movie => (
       <li key={movie.id}>
         <h3>{movie.title}</h3>
-        <p>{movie.year}</p>
         <img src={movie.poster} alt={movie.title} />
+        <p>{movie.year}</p>
       </li>
     ))
   }
