@@ -45,7 +45,12 @@ function App () {
       <header>
         <h1>Movie Finder</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input onChange={handleChange} value={query} name='movie-query' type='text' placeholder='Rocky IV' />
+          <input
+            style={{
+              border: '1px solid transparent',
+              borderColor: error ? 'red' : 'transparent'
+            }} onChange={handleChange} value={query} name='movie-query' type='text' placeholder='Rocky IV'
+          />
           <button type='submit'>Search</button>
         </form>
         {error && <p className='error'>{error}</p>}
