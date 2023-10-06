@@ -1,8 +1,8 @@
 export const ListOfMovies = ({ movies }) => (
-  <ul>
+  <ul className='movies'>
     {
     movies.map(movie => (
-      <li key={movie.id}>
+      <li className='movie' key={movie.id}>
         <h3>{movie.title}</h3>
         <img src={movie.poster} alt={movie.title} />
         <p>{movie.year}</p>

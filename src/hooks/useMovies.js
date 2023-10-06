@@ -1,6 +1,6 @@
 import responseMovies from '../mocks/with-results.json'
 
-export const useMovies = () => {
+export function useMovies () {
   const movies = responseMovies.Search
 
   const mappedMovies = movies?.map(movie => ({

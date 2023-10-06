@@ -13,6 +13,8 @@ API a usar:
 
 -   Necesita mostrar un input para buscar la pelicula y un boton para buscar.
 -   Lista las peliculas encontradas y muestra el titulo, año y poster.
+    -   Que el formulario funcione
+    -   Hacer el fetching de datos a la API
 -   Haz que las peliculas se muestren en un grid responsive.
 
 ### Primera iteracion:
