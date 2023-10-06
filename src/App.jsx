@@ -7,16 +7,19 @@ import { useSearch } from './hooks/useSearch'
 // [x] Add an input with a search button
 // [x] Add mocks for type manager easily
 // [x] List the movies found and display the title, year, and poster
+// [x] Que el formulario funcione
+// [x] Hacer el fetching de datos a la API COMMIT CHANGES BEFORE CONTINUE
+// [x] Haz que las peliculas se muestren en un grid responsive.
 
 function App () {
-  const { movies } = useMovies()
   const { search, updateSearch, error } = useSearch()
+  const { movies, getMovies } = useMovies({ search })
 
   console.log('render')
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({ search })
+    getMovies()
   }
 
   const handleChange = (event) => {
