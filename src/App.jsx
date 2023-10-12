@@ -8,12 +8,12 @@ import { useSearch } from './hooks/useSearch'
 // [x] Add mocks for type manager easily
 // [x] List the movies found and display the title, year, and poster
 // [x] Que el formulario funcione
-// [x] Hacer el fetching de datos a la API COMMIT CHANGES BEFORE CONTINUE
+// [x] Hacer el fetching de datos a la API
 // [x] Haz que las peliculas se muestren en un grid responsive.
 
 function App () {
   const { search, updateSearch, error } = useSearch()
-  const { movies, getMovies } = useMovies({ search })
+  const { movies, loading, getMovies } = useMovies({ search })
 
   console.log('render')
 
@@ -45,7 +45,9 @@ function App () {
       </header>
 
       <main>
-        <Movies movies={movies} />
+        {
+          loading ? <p>Cargando...</p> : <Movies movies={movies} />
+        }
       </main>
     </div>
   )
