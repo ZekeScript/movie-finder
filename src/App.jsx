@@ -10,6 +10,7 @@ import { useSearch } from './hooks/useSearch'
 // [x] Que el formulario funcione
 // [x] Hacer el fetching de datos a la API
 // [x] Haz que las peliculas se muestren en un grid responsive.
+// [x] Prevent the same search twice in a row
 
 function App () {
   const { search, updateSearch, error } = useSearch()
