@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
@@ -11,16 +12,22 @@ import { useSearch } from './hooks/useSearch'
 // [x] Hacer el fetching de datos a la API
 // [x] Haz que las peliculas se muestren en un grid responsive.
 // [x] Prevent the same search twice in a row
+// [x] Checkbox for sort movies by title
 
 function App () {
+  const [sort, setSort] = useState(false)
   const { search, updateSearch, error } = useSearch()
-  const { movies, loading, getMovies } = useMovies({ search })
+  const { movies, loading, getMovies } = useMovies({ search, sort })
 
   console.log('render')
 
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies()
+  }
+
+  const handleSort = () => {
+    setSort(!sort)
   }
 
   const handleChange = (event) => {
@@ -40,6 +47,7 @@ function App () {
               borderColor: error ? 'red' : 'transparent'
             }} onChange={handleChange} value={search} name='movie-query' type='text' placeholder='Rocky IV'
           />
+          <input type='checkbox' onChange={handleSort} checked={sort} />
           <button type='submit'>Search</button>
         </form>
         {error && <p className='error'>{error}</p>}

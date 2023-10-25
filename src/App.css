@@ -16,11 +16,15 @@ main {
 .form {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
 .form button {
   border-radius: 5px;
+}
+.form input {
+  margin: 0;
 }
 
 .error {
