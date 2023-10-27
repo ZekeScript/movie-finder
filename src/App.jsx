@@ -19,11 +19,9 @@ function App () {
   const { search, updateSearch, error } = useSearch()
   const { movies, loading, getMovies } = useMovies({ search, sort })
 
-  console.log('render')
-
   const handleSubmit = (event) => {
     event.preventDefault()
-    getMovies()
+    getMovies({ search })
   }
 
   const handleSort = () => {
@@ -31,9 +29,9 @@ function App () {
   }
 
   const handleChange = (event) => {
-    const newQuery = event.target.value
-    if (newQuery.startsWith(' ')) return
-    updateSearch(event.target.value)
+    const newSearch = event.target.value
+    updateSearch(newSearch)
+    getMovies({ search: newSearch })
   }
 
   return (
