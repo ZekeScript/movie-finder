@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
+import debounce from 'just-debounce-it'
 
 // [x] Add css framework classless
 // [x] Add an input with a search button
@@ -19,6 +20,14 @@ function App () {
   const { search, updateSearch, error } = useSearch()
   const { movies, loading, getMovies } = useMovies({ search, sort })
 
+  const debouncedGetMovies = useCallback(
+    debounce((search) => {
+      console.log('se esta buscando', search)
+      getMovies({ search })
+    }, 3000)
+    , []
+  )
+
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies({ search })
@@ -31,7 +40,7 @@ function App () {
   const handleChange = (event) => {
     const newSearch = event.target.value
     updateSearch(newSearch)
-    getMovies({ search: newSearch })
+    debouncedGetMovies(newSearch)
   }
 
   return (
